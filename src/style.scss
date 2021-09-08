@@ -1,3 +1,5 @@
+// https://coolors.co/64113f-de4d86-84e6f8-ff8427-306b34
+
 //mixins
 @mixin transition-mix(
   $property: all,
@@ -21,6 +23,7 @@
 
 //basic variables
 $theme-font-color: #2c2c2c;
+$theme-accent-color: #ff8427;
 
 body {
   font: {
@@ -83,4 +86,16 @@ body {
 .content {
   width: 600px;
   margin: 0 auto 50px;
+}
+
+// text slider styles
+.text-slider {
+  font: {
+    size: 40px;
+  }
+  letter-spacing: 1px;
+}
+
+.text-slider__options {
+  color: $theme-accent-color;
 }

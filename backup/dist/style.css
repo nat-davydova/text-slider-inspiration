@@ -46,3 +46,12 @@ body a {
   width: 600px;
   margin: 0 auto 50px;
 }
+
+.text-slider {
+  font-size: 40px;
+  letter-spacing: 1px;
+}
+
+.text-slider__options {
+  color: #ff8427;
+}
