@@ -8,11 +8,21 @@ function getAndPrepareSlides(slidesOptions) {
 }
 
 function setSlideIntoUI(slide) {
-  slidesOptions.innerHTML = slide;
+  const newSlideNode = document.createElement("span");
+  newSlideNode.textContent = slide;
+
+  newSlideNode.style.opacity = 0;
+  newSlideNode.style.transition = "opacity .2s linear 0s";
+
+  slidesOptions.innerHTML = "";
+  slidesOptions.appendChild(newSlideNode);
+  setTimeout(() => {
+    newSlideNode.style.opacity = 1;
+  }, 0);
 }
 
 function getCurrentSlideIndex() {
-  const slideValue = slidesOptions.innerHTML;
+  const slideValue = slidesOptions.textContent;
   const slides = getAndPrepareSlides(slidesOptions);
   return slides.indexOf(slideValue);
 }
@@ -34,7 +44,7 @@ function textSliderInit() {
   const slides = getAndPrepareSlides(slidesOptions);
   setSlideIntoUI(slides[0]);
 
-  mapSlides(slides, 1000);
+  mapSlides(slides, 1500);
 }
 
 textSliderInit();
