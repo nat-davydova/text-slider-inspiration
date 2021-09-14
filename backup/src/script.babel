@@ -30,9 +30,9 @@ function getCurrentSlideIndex() {
 function mapSlides(slides, ms) {
   setTimeout(function slider() {
     const currentSlideIndex = getCurrentSlideIndex();
-    const newSlideIndex = slides[currentSlideIndex + 1] ?
-    currentSlideIndex + 1 :
-    0;
+    const newSlideIndex = slides[currentSlideIndex + 1]
+      ? currentSlideIndex + 1
+      : 0;
 
     setSlideIntoUI(slides[newSlideIndex]);
 
