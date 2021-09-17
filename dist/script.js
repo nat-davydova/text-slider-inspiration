@@ -7,6 +7,8 @@ function getAndPrepareSlides(slidesOptions) {
   return slidesFromOptions;
 }
 
+function setInitialSlideStyles(slide, animat) {}
+
 function setSlideIntoUI(slide) {
   const newSlideNode = document.createElement("span");
   newSlideNode.textContent = slide;
@@ -19,6 +21,13 @@ function setSlideIntoUI(slide) {
   setTimeout(() => {
     newSlideNode.style.opacity = 1;
   }, 0);
+}
+
+function removeSlideFromUI() {
+  const slide = slidesOptions.querySelector("span");
+  setTimeout(() => {
+    slide.style.opacity = 0;
+  }, 1200);
 }
 
 function getCurrentSlideIndex() {
@@ -35,6 +44,7 @@ function mapSlides(slides, ms) {
     0;
 
     setSlideIntoUI(slides[newSlideIndex]);
+    removeSlideFromUI();
 
     setTimeout(slider, ms);
   }, ms);
