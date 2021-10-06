@@ -30,12 +30,12 @@ function getAndPrepareSlides(slidesOptions) {
   return slidesFromOptions;
 }
 
-function setSlideIntoUI(slide) {
+function setSlideIntoUI(slide, animationDuration) {
   const newSlideNode = document.createElement("span");
   newSlideNode.textContent = slide;
 
   newSlideNode.style.opacity = 0;
-  newSlideNode.style.transition = "opacity .2s linear 0s";
+  newSlideNode.style.transition = `opacity ${animationDuration}ms linear 0s`;
 
   slidesOptions.innerHTML = "";
   slidesOptions.appendChild(newSlideNode);
@@ -48,7 +48,7 @@ function removeSlideFromUI() {
   const slide = slidesOptions.querySelector("span");
   setTimeout(() => {
     slide.style.opacity = 0;
-  }, 1200);
+  }, 1900);
 }
 
 function getCurrentSlideIndex() {
@@ -57,25 +57,26 @@ function getCurrentSlideIndex() {
   return slides.indexOf(slideValue);
 }
 
-function mapSlides(slides, ms) {
+function mapSlides(slides, slideDuration, animationDuration) {
   setTimeout(function slider() {
     const currentSlideIndex = getCurrentSlideIndex();
     const newSlideIndex = slides[currentSlideIndex + 1] ?
     currentSlideIndex + 1 :
     0;
 
-    setSlideIntoUI(slides[newSlideIndex]);
+    setSlideIntoUI(slides[newSlideIndex], animationDuration);
     removeSlideFromUI();
 
-    setTimeout(slider, ms);
-  }, ms);
+    setTimeout(slider, slideDuration);
+  }, slideDuration);
 }
 
-function textSliderInit() {
+function textSliderInit({ animationDuration }) {
   const slides = getAndPrepareSlides(slidesOptions);
   setSlideIntoUI(slides[0]);
 
-  mapSlides(slides, 1500);
+  mapSlides(slides, 1500, animationDuration);
 }
 
-textSliderInit();
+textSliderInit({
+  animationDuration: 400 });
