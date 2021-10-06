@@ -48,10 +48,21 @@ body a {
 }
 
 .text-slider {
+  width: 450px;
+  margin: 0 auto;
   font-size: 40px;
   letter-spacing: 1px;
 }
 
 .text-slider__options {
   color: #ff8427;
+}
+
+.options {
+  width: 450px;
+  margin: 0 auto 50px;
+}
+
+.options__item {
+  margin-bottom: 20px;
 }
