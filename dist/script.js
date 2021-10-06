@@ -1,13 +1,34 @@
 const slider = document.querySelector(".text-slider");
 const slidesOptions = slider.querySelector("[data-options]");
+const animationTypeCustomizeElem = document.querySelector("#animation-type");
+const slideDurationCustomizeElem = document.querySelector("#slide-duration");
+const animationDurationCustomizeElem = document.querySelector(
+"#animation-duration");
 
+
+//!!! DEMO SCRIPTS, YOU DON'T NEED THEM
+function getDropdownValue(input) {
+  return input.value;
+}
+
+animationTypeCustomizeElem.addEventListener("change", () => {
+  const currentValue = getDropdownValue(animationTypeCustomizeElem);
+});
+
+slideDurationCustomizeElem.addEventListener("change", () => {
+  const currentValue = getDropdownValue(slideDurationCustomizeElem);
+});
+
+animationDurationCustomizeElem.addEventListener("change", () => {
+  const currentValue = getDropdownValue(animationDurationCustomizeElem);
+});
+
+//!!! SLIDER SCRIPTS, YOU NEED THEM
 function getAndPrepareSlides(slidesOptions) {
   const slidesOptionsList = slidesOptions.dataset.options;
   const slidesFromOptions = slidesOptionsList.split(", ");
   return slidesFromOptions;
 }
-
-function setInitialSlideStyles(slide, animat) {}
 
 function setSlideIntoUI(slide) {
   const newSlideNode = document.createElement("span");

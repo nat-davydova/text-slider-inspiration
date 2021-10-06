@@ -11,22 +11,22 @@ header.header
 //PEN CONTENT     
 .content
   .container
-    .options
-      .options__item
+    .customize
+      .customize__item
         label(for="animation-type") Pick animation type:
         select#animation-type.form-select
           option(value="none") No animation
           option(value="opacity", selected) Opacity
           option(value="vertical") Vertical Sliding
           option(value="to-right") To Right Sliding
-      .options__item
+      .customize__item
         label(for="slide-duration") Pick slide duration:
         select#slide-duration.form-select
           option(value=1200) 1200
           option(value=1500, selected) 1500
           option(value=1800) 1800
           option(value=2100) 2100
-      .options__item
+      .customize__item
         label(for="animation-duration") Pick in/out animation duration:
         select#animation-duration.form-select
           option(value=100) 100ms
@@ -36,4 +36,4 @@ header.header
 
     .text-slider
       p I fond of&nbsp;
-        span.text-slider__options(data-options="HTML, CSS, JavaScript")
+        span.text-slider__options(data-options="HTML, CSS, JavaScript, a11y")

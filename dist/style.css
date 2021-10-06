@@ -58,11 +58,11 @@ body a {
   color: #ff8427;
 }
 
-.options {
+.customize {
   width: 450px;
   margin: 0 auto 50px;
 }
 
-.options__item {
+.customize__item {
   margin-bottom: 20px;
 }
