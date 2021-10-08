@@ -11,16 +11,29 @@ function getDropdownValue(input) {
   return input.value;
 }
 
-animationTypeCustomizeElem.addEventListener("change", () => {
-  const currentValue = getDropdownValue(animationTypeCustomizeElem);
-});
+function getInitSliderParams() {
+  const animationDuration = getDropdownValue(animationDurationCustomizeElem);
+
+  const animationType = getDropdownValue(animationTypeCustomizeElem);
+
+  const slideDuration = getDropdownValue(slideDurationCustomizeElem);
+
+  return {
+    animationDuration,
+    animationType,
+    slideDuration
+  };
+}
+
+animationTypeCustomizeElem.addEventListener("change", () => {});
 
 slideDurationCustomizeElem.addEventListener("change", () => {
   const currentValue = getDropdownValue(slideDurationCustomizeElem);
 });
 
 animationDurationCustomizeElem.addEventListener("change", () => {
-  const currentValue = getDropdownValue(animationDurationCustomizeElem);
+  const sliderParams = getInitSliderParams();
+  textSliderInit(sliderParams);
 });
 
 //!!! SLIDER SCRIPTS, YOU NEED THEM
@@ -79,6 +92,6 @@ function textSliderInit({ animationDuration }) {
   mapSlides(slides, 1500, animationDuration);
 }
 
-textSliderInit({
-  animationDuration: 400
-});
+// INITING SLIDER
+const sliderParams = getInitSliderParams();
+textSliderInit(sliderParams);
