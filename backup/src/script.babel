@@ -28,7 +28,9 @@ function getInitSliderParams() {
 animationTypeCustomizeElem.addEventListener("change", () => {});
 
 slideDurationCustomizeElem.addEventListener("change", () => {
-  const currentValue = getDropdownValue(slideDurationCustomizeElem);
+  textSliderDestroy();
+  const sliderParams = getInitSliderParams();
+  textSliderInit(sliderParams);
 });
 
 animationDurationCustomizeElem.addEventListener("change", () => {
@@ -91,11 +93,11 @@ function mapSlides(slides, slideDuration, animationDuration) {
   sliderTimeouts.push(outerTimeoutID);
 }
 
-function textSliderInit({ animationDuration }) {
+function textSliderInit({ animationDuration, slideDuration }) {
   const slides = getAndPrepareSlides(slidesOptions);
   setSlideIntoUI(slides[0]);
 
-  mapSlides(slides, 1500, animationDuration);
+  mapSlides(slides, slideDuration, animationDuration);
 }
 
 function clearTimeouts() {
