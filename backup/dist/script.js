@@ -25,18 +25,22 @@ function getInitSliderParams() {
 
 }
 
-animationTypeCustomizeElem.addEventListener("change", () => {});
-
-slideDurationCustomizeElem.addEventListener("change", () => {
+function reInitSlider() {
   textSliderDestroy();
   const sliderParams = getInitSliderParams();
   textSliderInit(sliderParams);
+}
+
+animationTypeCustomizeElem.addEventListener("change", () => {
+  reInitSlider();
+});
+
+slideDurationCustomizeElem.addEventListener("change", () => {
+  reInitSlider();
 });
 
 animationDurationCustomizeElem.addEventListener("change", () => {
-  textSliderDestroy();
-  const sliderParams = getInitSliderParams();
-  textSliderInit(sliderParams);
+  reInitSlider();
 });
 
 //!!! SLIDER SCRIPTS, YOU NEED THEM
@@ -48,7 +52,8 @@ function getAndPrepareSlides(slidesOptions) {
   return slidesFromOptions;
 }
 
-function setSlideIntoUI(slide, animationDuration) {
+function setSlideIntoUI(slide, animationDuration, animationType) {
+  console.log(animationType);
   const newSlideNode = document.createElement("span");
   newSlideNode.textContent = slide;
 
@@ -62,7 +67,7 @@ function setSlideIntoUI(slide, animationDuration) {
   }, 0);
 }
 
-function removeSlideFromUI(slideDuration, animationDuration) {
+function removeSlideFromUI(slideDuration, animationDuration, animationType) {
   const slide = slidesOptions.querySelector("span");
   const msToOutSlide = slideDuration - animationDuration;
   setTimeout(() => {
@@ -76,15 +81,15 @@ function getCurrentSlideIndex() {
   return slides.indexOf(slideValue);
 }
 
-function mapSlides(slides, slideDuration, animationDuration) {
+function mapSlides(slides, slideDuration, animationDuration, animationType) {
   const outerTimeoutID = setTimeout(function slider() {
     const currentSlideIndex = getCurrentSlideIndex();
     const newSlideIndex = slides[currentSlideIndex + 1] ?
     currentSlideIndex + 1 :
     0;
 
-    setSlideIntoUI(slides[newSlideIndex], animationDuration);
-    removeSlideFromUI(slideDuration, animationDuration);
+    setSlideIntoUI(slides[newSlideIndex], animationDuration, animationType);
+    removeSlideFromUI(slideDuration, animationDuration, animationType);
 
     const innerTimeoutID = setTimeout(slider, slideDuration);
     sliderTimeouts.push(innerTimeoutID);
@@ -93,11 +98,11 @@ function mapSlides(slides, slideDuration, animationDuration) {
   sliderTimeouts.push(outerTimeoutID);
 }
 
-function textSliderInit({ animationDuration, slideDuration }) {
+function textSliderInit({ animationDuration, slideDuration, animationType }) {
   const slides = getAndPrepareSlides(slidesOptions);
   setSlideIntoUI(slides[0]);
 
-  mapSlides(slides, slideDuration, animationDuration);
+  mapSlides(slides, slideDuration, animationDuration, animationType);
 }
 
 function clearTimeouts() {
