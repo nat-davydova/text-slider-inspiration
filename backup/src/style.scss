@@ -112,3 +112,14 @@ body {
 .customize__item {
   margin-bottom: 20px;
 }
+
+// animation types
+.slide {
+  opacity: 0;
+}
+
+.slide--animation-none {
+  &.is-visible {
+    opacity: 1;
+  }
+}

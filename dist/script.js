@@ -44,6 +44,13 @@ animationDurationCustomizeElem.addEventListener("change", () => {
 });
 
 //!!! SLIDER SCRIPTS, YOU NEED THEM
+const ANIMATION_TYPES = {
+  none: "none",
+  opacity: "opacity",
+  vertical: "vertical",
+  right: "right" };
+
+
 const sliderTimeouts = [];
 
 function getAndPrepareSlides(slidesOptions) {
@@ -52,18 +59,26 @@ function getAndPrepareSlides(slidesOptions) {
   return slidesFromOptions;
 }
 
+function getSlideClassByAnimationType(animationType) {
+  switch (animationType) {
+    default:
+      return "slide--animation-none";}
+
+}
+
 function setSlideIntoUI(slide, animationDuration, animationType) {
   console.log(animationType);
   const newSlideNode = document.createElement("span");
   newSlideNode.textContent = slide;
 
-  newSlideNode.style.opacity = 0;
-  newSlideNode.style.transition = `opacity ${animationDuration}ms linear 0s`;
+  newSlideNode.classList.add("slide");
+  const slideAnimationClass = getSlideClassByAnimationType(animationType);
+  newSlideNode.classList.add(slideAnimationClass);
 
   slidesOptions.innerHTML = "";
   slidesOptions.appendChild(newSlideNode);
   setTimeout(() => {
-    newSlideNode.style.opacity = 1;
+    newSlideNode.classList.add("is-visible");
   }, 0);
 }
 
@@ -71,7 +86,7 @@ function removeSlideFromUI(slideDuration, animationDuration, animationType) {
   const slide = slidesOptions.querySelector("span");
   const msToOutSlide = slideDuration - animationDuration;
   setTimeout(() => {
-    slide.style.opacity = 0;
+    slide.classList.remove("is-visible");
   }, msToOutSlide);
 }
 

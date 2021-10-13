@@ -66,3 +66,11 @@ body a {
 .customize__item {
   margin-bottom: 20px;
 }
+
+.slide {
+  opacity: 0;
+}
+
+.slide--animation-none.is-visible {
+  opacity: 1;
+}
