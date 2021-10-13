@@ -77,7 +77,9 @@ body a {
 }
 
 .slide--animation-opacity {
-  transition: opacity 0.2s linear 0s;
+  transition-property: opacity;
+  transition-timing-function: linear;
+  transition-delay: 0s;
 }
 .slide--animation-opacity.is-visible {
   opacity: 1;
@@ -85,7 +87,9 @@ body a {
 
 .slide--animation-vertical {
   transform: translateY(-50%);
-  transition: opacity 0.2s linear 0s, transform 0.2s linear 0s;
+  transition-property: opacity, transform;
+  transition-timing-function: linear;
+  transition-delay: 0s;
 }
 .slide--animation-vertical.is-visible {
   opacity: 1;
@@ -98,5 +102,7 @@ body a {
 .slide--animation-right.is-visible {
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 0.2s linear 0s, transform 0.2s linear 0s;
+  transition-property: opacity, transform;
+  transition-timing-function: linear;
+  transition-delay: 0s;
 }

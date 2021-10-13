@@ -84,6 +84,7 @@ function setSlideIntoUI(slide, animationDuration, animationType) {
 
   newSlideNode.classList.add("slide");
   const slideAnimationClass = getSlideClassByAnimationType(animationType);
+  newSlideNode.style.transitionDuration = `${animationDuration}ms`;
   newSlideNode.classList.add(slideAnimationClass);
 
   slidesOptions.innerHTML = "";
