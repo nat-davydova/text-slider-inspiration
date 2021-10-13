@@ -74,3 +74,10 @@ body a {
 .slide--animation-none.is-visible {
   opacity: 1;
 }
+
+.slide--animation-opacity {
+  transition: opacity 0.2s linear 0s;
+}
+.slide--animation-opacity.is-visible {
+  opacity: 1;
+}

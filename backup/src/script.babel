@@ -45,7 +45,6 @@ animationDurationCustomizeElem.addEventListener("change", () => {
 
 //!!! SLIDER SCRIPTS, YOU NEED THEM
 const ANIMATION_TYPES = {
-  none: "none",
   opacity: "opacity",
   vertical: "vertical",
   right: "right"
@@ -61,6 +60,8 @@ function getAndPrepareSlides(slidesOptions) {
 
 function getSlideClassByAnimationType(animationType) {
   switch (animationType) {
+    case ANIMATION_TYPES.opacity:
+      return "slide--animation-opacity";
     default:
       return "slide--animation-none";
   }
