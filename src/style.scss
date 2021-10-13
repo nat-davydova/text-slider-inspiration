@@ -100,6 +100,7 @@ body {
 }
 
 .text-slider__options {
+  display: inline-flex;
   color: $theme-accent-color;
 }
 
@@ -129,5 +130,15 @@ body {
 
   &.is-visible {
     opacity: 1;
+  }
+}
+
+.slide--animation-vartical {
+  transform: translateY(-50%);
+  transition: opacity 0.2s linear 0s, transform 0.2s linear 0s;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

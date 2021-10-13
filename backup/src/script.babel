@@ -62,6 +62,8 @@ function getSlideClassByAnimationType(animationType) {
   switch (animationType) {
     case ANIMATION_TYPES.opacity:
       return "slide--animation-opacity";
+    case ANIMATION_TYPES.vertical:
+      return "slide--animation-vartical";
     default:
       return "slide--animation-none";
   }
