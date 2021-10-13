@@ -50,6 +50,13 @@ const ANIMATION_TYPES = {
   right: "right" };
 
 
+const ANIMATION_CLASSNAMES = {
+  none: "slide--animation-none",
+  opacity: "slide--animation-opacity",
+  vertical: "slide--animation-vertical",
+  right: "slide--animation-right" };
+
+
 const sliderTimeouts = [];
 
 function getAndPrepareSlides(slidesOptions) {
@@ -61,13 +68,13 @@ function getAndPrepareSlides(slidesOptions) {
 function getSlideClassByAnimationType(animationType) {
   switch (animationType) {
     case ANIMATION_TYPES.opacity:
-      return "slide--animation-opacity";
+      return ANIMATION_CLASSNAMES.opacity;
     case ANIMATION_TYPES.vertical:
-      return "slide--animation-vertical";
+      return ANIMATION_CLASSNAMES.vertical;
     case ANIMATION_TYPES.right:
-      return "slide--animation-right";
+      return ANIMATION_CLASSNAMES.right;
     default:
-      return "slide--animation-none";}
+      return ANIMATION_CLASSNAMES.none;}
 
 }
 
