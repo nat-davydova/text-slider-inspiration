@@ -133,12 +133,22 @@ body {
   }
 }
 
-.slide--animation-vartical {
+.slide--animation-vertical {
   transform: translateY(-50%);
   transition: opacity 0.2s linear 0s, transform 0.2s linear 0s;
 
   &.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.slide--animation-right {
+  transform: translateX(-20%);
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.2s linear 0s, transform 0.2s linear 0s;
   }
 }

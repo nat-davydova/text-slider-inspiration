@@ -63,14 +63,15 @@ function getSlideClassByAnimationType(animationType) {
     case ANIMATION_TYPES.opacity:
       return "slide--animation-opacity";
     case ANIMATION_TYPES.vertical:
-      return "slide--animation-vartical";
+      return "slide--animation-vertical";
+    case ANIMATION_TYPES.right:
+      return "slide--animation-right";
     default:
       return "slide--animation-none";
   }
 }
 
 function setSlideIntoUI(slide, animationDuration, animationType) {
-  console.log(animationType);
   const newSlideNode = document.createElement("span");
   newSlideNode.textContent = slide;
 

@@ -83,11 +83,20 @@ body a {
   opacity: 1;
 }
 
-.slide--animation-vartical {
+.slide--animation-vertical {
   transform: translateY(-50%);
   transition: opacity 0.2s linear 0s, transform 0.2s linear 0s;
 }
-.slide--animation-vartical.is-visible {
+.slide--animation-vertical.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.slide--animation-right {
+  transform: translateX(-20%);
+}
+.slide--animation-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.2s linear 0s, transform 0.2s linear 0s;
 }
