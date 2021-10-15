@@ -78,19 +78,29 @@ function getSlideClassByAnimationType(animationType) {
 
 }
 
-function setSlideIntoUI(slide, animationDuration, animationType) {
+function setAnimationToSlide(slideNode, animationType, animationDuration) {
+  slideNode.classList.add("slide");
+  const slideAnimationClass = getSlideClassByAnimationType(animationType);
+  slideNode.style.transitionDuration = `${animationDuration}ms`;
+  slideNode.classList.add(slideAnimationClass);
+
+  return slideNode;
+}
+
+function setSlideIntoUI(slide, animationType, animationDuration) {
   const newSlideNode = document.createElement("span");
   newSlideNode.textContent = slide;
 
-  newSlideNode.classList.add("slide");
-  const slideAnimationClass = getSlideClassByAnimationType(animationType);
-  newSlideNode.style.transitionDuration = `${animationDuration}ms`;
-  newSlideNode.classList.add(slideAnimationClass);
+  const animatedSlideNode = setAnimationToSlide(
+  newSlideNode,
+  animationDuration,
+  animationType);
+
 
   slidesOptions.innerHTML = "";
   slidesOptions.appendChild(newSlideNode);
   setTimeout(() => {
-    newSlideNode.classList.add("is-visible");
+    animatedSlideNode.classList.add("is-visible");
   }, 0);
 }
 
