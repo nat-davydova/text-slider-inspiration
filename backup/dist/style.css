@@ -97,12 +97,13 @@ body a {
 }
 
 .slide--animation-right {
-  transform: translateX(-20%);
+  transform: translateX(30px);
+  transition-property: opacity, transform;
 }
 .slide--animation-right.is-visible {
   opacity: 1;
   transform: translateX(0);
-  transition-property: opacity, transform;
+  transition-property: opacity;
   transition-timing-function: linear;
   transition-delay: 0s;
 }
