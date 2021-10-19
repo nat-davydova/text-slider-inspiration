@@ -44,7 +44,6 @@ const ANIMATION_TYPES = {
 };
 
 const ANIMATION_CLASSNAMES = {
-  none: "slide--animation-none",
   opacity: "slide--animation-opacity",
   vertical: "slide--animation-vertical",
   right: "slide--animation-right"
@@ -67,11 +66,12 @@ function getSlideClassByAnimationType(animationType) {
     case ANIMATION_TYPES.right:
       return ANIMATION_CLASSNAMES.right;
     default:
-      return ANIMATION_CLASSNAMES.none;
+      throw new Error(`Expects type of ANIMATION_TYPES, got ${animationType}`);
   }
 }
 
-function setAnimationToSlide(slideNode, animationType, animationDuration) {
+
+function setAnimationToSlide(slideNode, animationDuration, animationType) {
   slideNode.classList.add("slide");
   const slideAnimationClass = getSlideClassByAnimationType(animationType);
   slideNode.style.transitionDuration = `${animationDuration}ms`;
@@ -80,7 +80,7 @@ function setAnimationToSlide(slideNode, animationType, animationDuration) {
   return slideNode;
 }
 
-function setSlideIntoUI(slide, animationType, animationDuration) {
+function setSlideIntoUI(slide, animationDuration, animationType) {
   const newSlideNode = document.createElement("span");
   newSlideNode.textContent = slide;
 
@@ -130,7 +130,7 @@ function mapSlides(slides, slideDuration, animationDuration, animationType) {
 
 function textSliderInit({ animationDuration, slideDuration, animationType }) {
   const slides = getAndPrepareSlides(slidesOptions);
-  setSlideIntoUI(slides[0], animationType, animationDuration);
+  setSlideIntoUI(slides[0], animationDuration, animationType);
 
   mapSlides(slides, slideDuration, animationDuration, animationType);
 }

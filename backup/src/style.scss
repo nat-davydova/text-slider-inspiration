@@ -119,12 +119,6 @@ body {
   opacity: 0;
 }
 
-.slide--animation-none {
-  &.is-visible {
-    opacity: 1;
-  }
-}
-
 .slide--animation-opacity {
   transition-property: opacity;
   transition-timing-function: linear;
