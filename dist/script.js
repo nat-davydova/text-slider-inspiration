@@ -1,3 +1,4 @@
+const customizationMenu = document.querySelector(".customize");
 const slider = document.querySelector(".text-slider");
 const slidesOptions = slider.querySelector("[data-options]");
 const animationTypeCustomizeElem = document.querySelector("#animation-type");
@@ -31,15 +32,7 @@ function reInitSlider() {
   textSliderInit(sliderParams);
 }
 
-animationTypeCustomizeElem.addEventListener("change", () => {
-  reInitSlider();
-});
-
-slideDurationCustomizeElem.addEventListener("change", () => {
-  reInitSlider();
-});
-
-animationDurationCustomizeElem.addEventListener("change", () => {
+customizationMenu.addEventListener("change", () => {
   reInitSlider();
 });
 
@@ -106,7 +99,7 @@ function setSlideIntoUI(slide, animationType, animationDuration) {
 
 function removeSlideFromUI(slideDuration, animationDuration, animationType) {
   const slide = slidesOptions.querySelector("span");
-  const msToOutSlide = slideDuration - animationDuration;
+  const msToOutSlide = slideDuration - animationDuration * 2;
   setTimeout(() => {
     slide.classList.remove("is-visible");
   }, msToOutSlide);
@@ -137,7 +130,7 @@ function mapSlides(slides, slideDuration, animationDuration, animationType) {
 
 function textSliderInit({ animationDuration, slideDuration, animationType }) {
   const slides = getAndPrepareSlides(slidesOptions);
-  setSlideIntoUI(slides[0]);
+  setSlideIntoUI(slides[0], animationType, animationDuration);
 
   mapSlides(slides, slideDuration, animationDuration, animationType);
 }
