@@ -70,7 +70,9 @@ function getSlideClassByAnimationType(animationType) {
   }
 }
 
-function setAnimationToSlide(slideNode, animationDuration, animationType) {
+function setAnimationToSlide(slideNode, animationParams) {
+  const { animationDuration, animationType } = animationParams;
+
   slideNode.classList.add("slide");
   const slideAnimationClass = getSlideClassByAnimationType(animationType);
   slideNode.style.transitionDuration = `${animationDuration}ms`;
@@ -79,15 +81,16 @@ function setAnimationToSlide(slideNode, animationDuration, animationType) {
   return slideNode;
 }
 
-function setSlideIntoUI(slide, animationDuration, animationType) {
+function setSlideIntoUI(slide, animationParams) {
+  const { animationDuration, animationType } = animationParams;
+
   const newSlideNode = document.createElement("span");
   newSlideNode.textContent = slide;
 
-  const animatedSlideNode = setAnimationToSlide(
-    newSlideNode,
+  const animatedSlideNode = setAnimationToSlide(newSlideNode, {
     animationDuration,
     animationType
-  );
+  });
 
   slidesOptions.innerHTML = "";
   slidesOptions.appendChild(newSlideNode);
@@ -96,7 +99,9 @@ function setSlideIntoUI(slide, animationDuration, animationType) {
   }, 0);
 }
 
-function removeSlideFromUI(slideDuration, animationDuration, animationType) {
+function removeSlideFromUI(animationParams) {
+  const { slideDuration, animationDuration, animationType } = animationParams;
+
   const slide = slidesOptions.querySelector("span");
   const msToOutSlide = slideDuration - animationDuration * 2;
   setTimeout(() => {
@@ -110,15 +115,17 @@ function getCurrentSlideIndex() {
   return slides.indexOf(slideValue);
 }
 
-function switchSlides(slides, slideDuration, animationDuration, animationType) {
+function switchSlides(slides, animationParams) {
+  const { slideDuration, animationDuration, animationType } = animationParams;
+
   const outerTimeoutID = setTimeout(function slider() {
     const currentSlideIndex = getCurrentSlideIndex();
     const newSlideIndex = slides[currentSlideIndex + 1]
       ? currentSlideIndex + 1
       : 0;
 
-    setSlideIntoUI(slides[newSlideIndex], animationDuration, animationType);
-    removeSlideFromUI(slideDuration, animationDuration, animationType);
+    setSlideIntoUI(slides[newSlideIndex], { animationDuration, animationType });
+    removeSlideFromUI({ slideDuration, animationDuration, animationType });
 
     const innerTimeoutID = setTimeout(slider, slideDuration);
     sliderTimeouts.push(innerTimeoutID);
@@ -129,9 +136,9 @@ function switchSlides(slides, slideDuration, animationDuration, animationType) {
 
 function textSliderInit({ animationDuration, slideDuration, animationType }) {
   const slides = getAndPrepareSlides(slidesOptions);
-  setSlideIntoUI(slides[0], animationDuration, animationType);
+  setSlideIntoUI(slides[0], { animationDuration, animationType });
 
-  switchSlides(slides, slideDuration, animationDuration, animationType);
+  switchSlides(slides, { slideDuration, animationDuration, animationType });
 }
 
 function clearTimeouts() {
